@@ -9,9 +9,8 @@
     href="https://mate.academy/static/favicon/android-chrome-192x192.png">
   <title>RGB to HEX</title>
   <style>
-
     body {
-
+      overflow: hidden;
       height: 97vh;
       display: flex;
       flex-direction: column;
@@ -37,6 +36,7 @@
       display: flex;
       align-items: center;
       background-color: white;
+      justify-content: center;
     }
 
     button {
@@ -46,7 +46,7 @@
 
     #res_col {
       border: 1px solid gray;
-      margin: 1vw 0;
+      margin: 0.5vw 0;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -60,6 +60,13 @@
 
     input {
       width: 6ch;
+      max-width: 30vw;
+    }
+
+    .inputs {
+      display: flex;
+      justify-content: center;
+      width: 100%;
     }
 
     .head {
@@ -93,94 +100,138 @@
       background: linear-gradient(to bottom, navy, gold);
     }
 
-    .head:hover, .head:hover>.ukraine {
+    .head:hover,
+    .head:hover>.ukraine {
       display: block;
       width: 100%;
     }
 
-    h3, .inputs > div {
+    h3,
+    .inputs>div {
       text-align: center;
     }
 
     @media (orientation: portrait) {
       .head {
-      width: 25%;
+        width: 25%;
       }
+
       button {
         margin: 2vw auto;
-      width: 25vw;
-      height: 5vw;
-    }
-    #res_col {
-      height: 45vh !important;
-    }
-    .ukraine {
-      margin-top: -2vw;
-      font-size: 1.25vw;
-      height: 3vw;
-      line-height: 3vw;
-    }
-    #result {
-      height: 20vh;
-      line-height: 5vh;
-      font-size: 15vh;
-      border-radius: 2.5vh;
-    }
-    input, label {
-      height: 5vh;
-      line-height: 5vh;
-      font-size: 5vh;
-    }
-    h3 {
-      display: block;
-      margin: 0;
-    }
+        width: 25vw;
+        height: 5vw;
+      }
+
+      #res_col {
+        height: 45vh !important;
+      }
+
+      .ukraine {
+        margin-top: -2vw;
+        font-size: 1.25vw;
+        height: 3vw;
+        line-height: 3vw;
+      }
+
+      #result {
+        height: 20vh;
+        line-height: 5vh;
+        font-size: 15vh;
+        border-radius: 2.5vh;
+      }
+
+      input,
+      label {
+        height: 5vh;
+        line-height: 5vh;
+        font-size: 5vh;
+      }
+
+      h3 {
+        margin-top: -3vh;
+        display: block;
+        line-height: 6vh;
+        display: block;
+      }
+
+      main {
+        max-height: 58vh;
+        margin-top: -3vh;
+      }
     }
 
     @media (orientation: landscape) {
       .head {
-      width: 17%;
-  
+        width: 17%;
+
       }
+
       button {
         margin: 0.5vw auto;
-      width: 15vw;
-      height: 5vh;
-    }
-    #res_col {
-      height: 30vh !important;
-    }
-    h3 {
-      line-height: 0.5vw;
+        width: 15vw;
+        height: 5vh;
+      }
+
+      #res_col {
+        height: 30vh !important;
+      }
+
+      h3 {
+        line-height: 0.5vw;
+      }
+
+      .ukraine {
+        margin-top: -2vw;
+        font-size: 1.3vw;
+        height: 3vw;
+        line-height: 3vw;
+      }
+
+      #result {
+        height: 8vw;
+        line-height: 2vw;
+        font-size: 6vw;
+        border-radius: 2.5vw;
+      }
+
+      input,
+      label {
+        height: 5vh;
+        line-height: 5vh;
+        font-size: 4vh;
+      }
+
+      h3 {
+        display: block;
+        /* margin: 0; */
+        margin-top: 0;
+        line-height: 1vh;
+      }
+
+      footer {
+        max-height: 5.5vh;
+        margin-bottom: 1vh;
+      }
+
+      main {
+        max-height: 58vh;
+        margin-bottom: -3vh;
+      }
     }
 
-    .ukraine {
-      margin-top: -2vw;
-      font-size: 2vw;
-      height: 3vw;
-    }
-    #result {
-      height: 8vw;
-      line-height: 2vw;
-      font-size: 6vw;
-      border-radius: 2.5vw;
-    }
+    @media screen and (max-width: 480px) {
+      #result {
+        width: 80vw;
+        height: 20vh;
+        line-height: 3vh;
+        font-size: 10vh;
+      }
 
-    input, label {
-      height: 5vh;
-      line-height: 5vh;
-      font-size: 4vh;
-    }
-    h3 {
-      display: block;
-      /* margin: 0; */
-      margin-top: 0;
-      line-height: 1vh;
-    }
-    }
-    /* @media screen and (min-width: 140ch){
+      h3 {
+        margin-bottom: 0vh;
+      }
 
-    } */
+    }
   </style>
 </head>
 
@@ -189,50 +240,51 @@
   <header class="head">
     <h1>Mate Academy</h1>
     <div class="ukraine">
-    We believe that Ukraine can become one of the world’s IT leaders. For this, we need to significantly improve the quality of specialists’ education.
+      We believe that Ukraine can become one of the world’s IT leaders. For this, we need to significantly improve the
+      quality of specialists’ education.
     </div>
   </header>
 
-<main>
-<h3><b style="color: red;">R</b><b style="color: green;"></b>G<b style="color: blue;">B</b> to #HEX</h3>
-  <div class="flex inputs">
-    
-    <div class="r">
-      <label for="r" style="background-color: red;">r:</label>
-      <input type="number" id="r" min="0" max="255" value="0">
-    </div>
-    <div class="g">
-      <label for="g" style="background-color: green;">g:</label>
-      <input type="number" id="g" min="0" max="255" value="0">
-    </div>
-    <div class="b">
-      <label for="b" style="background-color: blue;">b:</label>
-      <input type="number" id="b" min="0" max="255" value="0">
-    </div>
-  </div>
-  <div class="button">
-  <button id="transcode" type="button">to #hheexx *</button>
-</div>
+  <main>
+    <h3><b style="color: red;">R</b><b style="color: green;"></b>G<b style="color: blue;">B</b> to #HEX</h3>
+    <div class="flex inputs">
 
-  <div id="res_col">
-    <div id="result">
-      #
-      <span id="r_res" style="background-color: red;">00</span>
-      <span id="g_res" style="background-color: green;">00</span>
-      <span id="b_res" style="background-color: blue;">00</span>
-      ;
+      <div class="r">
+        <label for="r" style="background-color: red;">r:</label>
+        <input type="number" id="r" min="0" max="255" value="0">
+      </div>
+      <div class="g">
+        <label for="g" style="background-color: green;">g:</label>
+        <input type="number" id="g" min="0" max="255" value="0">
+      </div>
+      <div class="b">
+        <label for="b" style="background-color: blue;">b:</label>
+        <input type="number" id="b" min="0" max="255" value="0">
+      </div>
+    </div>
+    <div class="button">
+      <button id="transcode" type="button">to #hheexx *</button>
     </div>
 
+    <div id="res_col">
+      <div id="result">
+        #
+        <span id="r_res" style="background-color: red;">00</span>
+        <span id="g_res" style="background-color: green;">00</span>
+        <span id="b_res" style="background-color: blue;">00</span>
+        ;
+      </div>
 
-  </div>
-</main>
-<footer>
+
+    </div>
+  </main>
+  <footer>
     <p>
       * <b>hex</b> means hexadecimal number (16-bit depth) - 2 digits represent 16x16=256
       power options for each of the three primary colors
       which are commonly used in microelectronics (red, green, blue);
     </p>
-</footer>
+  </footer>
   <script>
     window.addEventListener('DOMContentLoaded', loaded);
 
