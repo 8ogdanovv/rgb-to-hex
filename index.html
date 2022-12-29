@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="192x192" href="https://mate.academy/static/favicon/android-chrome-192x192.png">
+  <title>RGB to HEX</title>
+  <style>
+    /* body {
+      margin: 0;
+      padding: 0;
+    } */
+    label {
+      display: inline-block;
+      width: 1vw;
+      color: white;
+      padding: 2px;
+      margin: 0 0 0 3px;
+    }
+    div :not(.head) {
+      margin: 1vh 0;
+    }
+    span {
+      display: block;
+      max-width: 2ch;
+      margin: 0;
+      color: white;
+      text-shadow: 0 0 5px black;
+    }
+    #result {
+      display: flex;
+      align-items: center;
+      height: 10vh;
+      line-height: 10vh;
+      font-size: 7vh;
+      background-color: white;
+      border-radius: 2.5vh;
+    }
+
+    button {
+      margin: 0;
+      padding: 0;
+    }
+
+    #res_col {
+      width: 50vw;
+      height: 50vh;
+      border: 1px solid gray;
+      margin: 1vw 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .flex {
+      display: flex;
+    }
+
+    input {
+      width: 6ch;
+    }
+
+    .head {
+      background-color: #e25544;
+      color: white;
+      width: 100%;
+    }
+
+  </style>
+</head>
+<body>
+<div class="head">
+    <h1>Mate Academy</h1>
+</div>
+
+  <h3><b style="color: red;">R</b><b style="color: green;"></b>G<b style="color: blue;">B</b> to #HEX</h3>
+
+  <div class="flex">
+  <div class="r">
+    <label for="r" style="background-color: red;">r:</label>
+    <input type="number" id="r" min="0" max="255" value="0">
+  </div>
+  <div class="g">
+    <label for="g" style="background-color: green;">g:</label>
+    <input type="number" id="g" min="0" max="255" value="0">
+  </div>
+  <div class="b">
+    <label for="b" style="background-color: blue;">b:</label>
+    <input type="number" id="b" min="0" max="255" value="0">
+  </div>
+</div>
+
+<button id="transcode" type="button">to hex</button>
+
+  <div id="res_col">
+    <div id="result">
+      #
+        <span id="r_res" style="background-color: red;">00</span>
+        <span id="g_res" style="background-color: green;">00</span>
+        <span id="b_res" style="background-color: blue;">00</span>
+      ;
+    </div>
+
+  </div>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', loaded);
+
+    function to16(value) {
+        parseInt(value) > 255 ? value = 255 :
+        parseInt(value) < 0 ? value = 0 :
+        value = value
+        return value.toString(16).length < 2 ? 
+          '0' + value.toString(16) :
+          value.toString(16);
+    }
+
+    function tohex() {
+      let r = document.getElementById('r');
+      let g = document.getElementById('g');
+      let b = document.getElementById('b');
+
+      let r_value = to16(r.value);
+      let g_value = to16(g.value);
+      let b_value = to16(b.value);
+      let result = document.getElementById('result');
+    }
+
+    function col_res() {
+        let r_res = document.getElementById('r_res').innerText;
+        let g_res = document.getElementById('g_res').innerText;
+        let b_res = document.getElementById('b_res').innerText;
+        let color = '#' + r_res + g_res + b_res;
+        document.getElementById('res_col').style.backgroundColor = color;
+    }
+
+    function live_code() {
+      let r = document.getElementById('r');
+      let g = document.getElementById('g');
+      let b = document.getElementById('b');
+      let r_value = parseInt(r.value);
+      let g_value = parseInt(g.value);
+      let b_value = parseInt(b.value);
+
+      function change(event) {
+        let value = parseInt(event.target.value);
+        let id = event.target.id;
+        let res_id = id + '_res';
+        let res_el = document.getElementById(res_id);
+        res_el.innerHTML = to16(value);
+        value > 255 ? event.target.value = 255 :
+        value < 0 ? event.target.value = 0 :
+        event.target.value = value;
+        col_res();
+      }
+
+      r.addEventListener('change', change);
+      g.addEventListener('change', change);
+      b.addEventListener('change', change);
+    }
+
+    function loaded() {
+      console.log('loaded');
+      let transcode = document.getElementById('transcode');
+      transcode.addEventListener('click', tohex);
+      live_code();
+      col_res();
+    }
+  </script>
+</body>
+</html>
